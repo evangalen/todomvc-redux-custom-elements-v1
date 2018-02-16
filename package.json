@@ -1,0 +1,9 @@
+{
+  "name": "todomvc-redux-custom-elements-v1",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "^8.9.4"
+  }
+}
