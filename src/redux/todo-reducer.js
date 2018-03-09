@@ -1,19 +1,22 @@
-import {ADD_TODO, MARK_TODO_COMPLETED, SET_TODO_COMPLETED} from './action-types';
+import {ADD_TODO, MARK_TODO, REMOVE_TODO} from './action-types';
 import Immutable from 'seamless-immutable';
 
-const initialState = [
-    {text: 'Use JavaScript', completed: true},
-    {text: 'Explore Custom Elements v1', completed: false},
-    {text: 'Reduxify your app logic', completed: false}
-];
+const initialState = Immutable.from([
+    {text: 'Use JavaScript', marked: true},
+    {text: 'Explore Custom Elements v1', marked: false},
+    {text: 'Reduxify your app logic', marked: false}
+]);
+
 
 export function todoReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
-      return state.concat(action.payload);
-    case SET_TODO_COMPLETED:
-      return Immutable.setIn(state, [action.payload.index, 'completed'], action.payload.completed);
+      return state.concat({text: action.payload, marked: false});
+    case MARK_TODO:
+      return Immutable.setIn(state, [action.payload, 'marked'], !state[action.payload].marked);
+    case REMOVE_TODO:
+      return state.filter((item, index) => index !== action.payload);
     default:
-      return state
+      return state;
   }
 }
