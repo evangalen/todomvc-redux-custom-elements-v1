@@ -1,7 +1,8 @@
-import { createStore } from 'redux'
-import { combineReducers } from 'redux-seamless-immutable'
-import { todoReducer } from './todo-reducer'
+import { createStore } from 'redux';
+import { combineReducers } from 'redux-seamless-immutable';
+import { todoReducer } from './todo-reducer';
 
 const rootReducer = combineReducers({todos: todoReducer});
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
