@@ -3,13 +3,7 @@ SystemJS.config({
     meta: {
         '*.js': {
             babelOptions: {
-                es2015: true
-    //             plugins: [
-    //                 "babel-plugin-transform-es2015-classes",
-    //                 ["babel-plugin-transform-builtin-classes", {
-    //                     "globals": ["Array", "Error", "HTMLElement"]
-    //                 }]
-    //             ]
+                es2015: false
             }
         }
     },
